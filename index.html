@@ -3,232 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Concurso Agrinho 2026 | Educação e Sustentabilidade</title>
-    <style>
-        /* Reset e Configurações Gerais */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        :root {
-            --verde-escuro: #1b4d3e;
-            --verde-claro: #2c9359;
-            --amarelo: #f4c430;
-            --bege-claro: #f7f9f6;
-            --texto: #333333;
-            --branco: #ffffff;
-        }
-
-        body {
-            background-color: var(--bege-claro);
-            color: var(--texto);
-            line-height: 1.6;
-        }
-
-        /* Cabeçalho e Navegação */
-        header {
-            background-color: var(--verde-escuro);
-            color: var(--branco);
-            padding: 1rem 5%;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-
-        header .logo h1 {
-            font-size: 1.8rem;
-            font-weight: 700;
-        }
-
-        header .logo span {
-            color: var(--amarelo);
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-        }
-
-        nav ul li {
-            margin-left: 20px;
-        }
-
-        nav ul li a {
-            color: var(--branco);
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.3s;
-        }
-
-        nav ul li a:hover {
-            color: var(--amarelo);
-        }
-
-        /* Seção Hero (Banner Principal) */
-        .hero {
-            background: linear-gradient(rgba(27, 77, 62, 0.7), rgba(27, 77, 62, 0.7)), url('https://images.unsplash.com/photo-1592417817098-8f3d6eb19675?auto=format&fit=crop&q=80&w=1200') no-repeat center center/cover;
-            height: 60vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            color: var(--branco);
-            padding: 0 20px;
-        }
-
-        .hero h2 {
-            font-size: 3rem;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-        }
-
-        .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 20px;
-            max-width: 600px;
-        }
-
-        .btn {
-            background-color: var(--amarelo);
-            color: var(--verde-escuro);
-            padding: 12px 30px;
-            text-decoration: none;
-            font-weight: bold;
-            border-radius: 25px;
-            transition: transform 0.2s, background-color 0.3s;
-        }
-
-        .btn:hover {
-            transform: scale(1.05);
-            background-color: var(--branco);
-        }
-
-        /* Seções de Conteúdo */
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
-
-        .section-title {
-            text-align: center;
-            color: var(--verde-escuro);
-            margin-bottom: 30px;
-            font-size: 2rem;
-            position: relative;
-        }
-
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 60px;
-            height: 4px;
-            background-color: var(--amarelo);
-            margin: 10px auto 0;
-            border-radius: 2px;
-        }
-
-        /* Sobre o Projeto */
-        .about-text {
-            text-align: center;
-            font-size: 1.1rem;
-            max-width: 800px;
-            margin: 0 auto 40px;
-        }
-
-        /* Categorias (Cards) */
-        .categories {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
-
-        .card {
-            background-color: var(--branco);
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            transition: transform 0.3s;
-            text-align: center;
-            padding: 20px;
-            border-top: 5px solid var(--verde-claro);
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-        }
-
-        .card h3 {
-            color: var(--verde-escuro);
-            margin-bottom: 10px;
-        }
-
-        /* Cronograma (Tabela) */
-        .schedule-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-            background-color: var(--branco);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            border-radius: 8px;
-            overflow: hidden;
-        }
-
-        .schedule-table th, .schedule-table td {
-            padding: 15px;
-            text-align: left;
-        }
-
-        .schedule-table th {
-            background-color: var(--verde-escuro);
-            color: var(--branco);
-        }
-
-        .schedule-table tr:nth-child(even) {
-            background-color: #f2f2f2;
-        }
-
-        /* Rodapé */
-        footer {
-            background-color: var(--verde-escuro);
-            color: var(--branco);
-            text-align: center;
-            padding: 20px;
-            margin-top: 40px;
-            font-size: 0.9rem;
-        }
-
-        /* Responsividade */
-        @media (max-width: 768px) {
-            header {
-                flex-direction: column;
-                gap: 10px;
-            }
-            nav ul li {
-                margin: 0 10px;
-            }
-            .hero h2 {
-                font-size: 2rem;
-            }
-        }
-    </style>
+    <title>Concurso Agrinho 2026 | Sustentabilidade e Inovação</title>
+    <link rel="stylesheet" href="estilo.css">
 </head>
 <body>
 
-    <!-- Cabeçalho -->
     <header>
         <div class="logo">
             <h1>Concurso <span>Agrinho 2026</span></h1>
         </div>
-        <nav>
+        <button class="menu-toggle" id="menuToggle" aria-label="Abrir Menu">☰</button>
+        <nav id="navMenu">
             <ul>
                 <li><a href="#sobre">Sobre</a></li>
                 <li><a href="#categorias">Categorias</a></li>
@@ -238,85 +23,91 @@
         </nav>
     </header>
 
-    <!-- Banner Principal -->
     <section class="hero">
-        <h2>Ascom, Campo e Conhecimento</h2>
-        <p>Semeando inovação, cultivando a sustentabilidade e transformando a educação no nosso país.</p>
-        <a href="#sobre" class="btn">Saiba Mais</a>
-    </section>
-
-    <!-- Sobre o Projeto -->
-    <section id="sobre" class="container">
-        <h2 class="section-title">Sobre o Agrinho 2026</h2>
-        <p class="about-text">
-            O Concurso Agrinho é o maior programa de responsabilidade social que une o campo e a sala de aula. Em 2026, nosso foco está voltado para a tecnologia sustentável no campo, incentivando a criatividade e o pensamento crítico de alunos e professores na busca por soluções para o futuro do agronegócio.
-        </p>
-    </section>
-
-    <!-- Categorias -->
-    <section id="categories" class="container" style="background-color: #fff; border-radius: 12px; padding: 40px 20px;">
-        <h2 class="section-title" id="categorias">Categorias do Concurso</h2>
-        <div class="categories">
-            <div class="card">
-                <h3>Desenho</h3>
-                <p>Destinado aos alunos da Educação Infantil e anos iniciais do Ensino Fundamental. Solte a imaginação no papel!</p>
-            </div>
-            <div class="card">
-                <h3>Redação</h3>
-                <p>Para alunos do Ensino Fundamental e Ensino Médio. Escreva sobre as transformações da agricultura e da sociedade.</p>
-            </div>
-            <div class="card">
-                <h3>Experiência Pedagógica</h3>
-                <p>Categoria exclusiva para professores que desenvolveram projetos inovadores e impactantes em sala de aula.</p>
-            </div>
-            <div class="card">
-                <h3>Escola Agrinho</h3>
-                <p>Premiação para as instituições de ensino que engajaram toda a comunidade escolar nas práticas sustentáveis.</p>
-            </div>
+        <div class="hero-content">
+            <h2>Agro Forte, Futuro Sustentável</h2>
+            <p>Buscando o equilíbrio ideal entre a produção no campo e a preservação do meio ambiente através da educação.</p>
+            <a href="#sobre" class="btn">Conhecer o Projeto</a>
         </div>
     </section>
 
-    <!-- Cronograma -->
-    <section id="cronograma" class="container">
-        <h2 class="section-title">Cronograma Importante</h2>
-        <table class="schedule-table">
-            <thead>
-                <tr>
-                    <th>Etapa</th>
-                    <th>Período</th>
-                    <th>Status</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Lançamento do Edital & Temática</td>
-                    <td>Março de 2026</td>
-                    <td style="color: green; font-weight: bold;">Concluído</td>
-                </tr>
-                <tr>
-                    <td>Período de Inscrições e Envio dos Trabalhos</td>
-                    <td>Abril a Agosto de 2026</td>
-                    <td style="color: #d4a373; font-weight: bold;">Aberto</td>
-                </tr>
-                <tr>
-                    <td>Avaliação pelas Bancas Julgadoras</td>
-                    <td>Setembro de 2026</td>
-                    <td>Aguardando</td>
-                </tr>
-                <tr>
-                    <td>Grande Evento de Premiação</td>
-                    <td>Novembro de 2026</td>
-                    <td>Aguardando</td>
-                </tr>
-            </tbody>
-        </table>
+    <section id="sobre" class="container">
+        <h2 class="section-title">Sobre o Agrinho</h2>
+        <p class="about-text">
+            O Programa Agrinho chega à sua nova edição consolidado como a maior iniciativa de responsabilidade social e educacional do Paraná. Em uma parceria forte entre o <strong>Sistema FAEP/SENAR-PR</strong> e a <strong>Secretaria de Estado da Educação (SEED-PR)</strong>, o concurso estimula a pesquisa, a criatividade e o debate em sala de aula sobre a sustentabilidade e a conexão do campo com a cidade.
+        </p>
     </section>
 
-    <!-- Rodapé -->
+    <section id="categorias" class="container clear-section">
+        <h2 class="section-title">Categorias em Destaque</h2>
+        <div class="categories-grid">
+            
+            <div class="card" onclick="exibirDetalhes('redacao')">
+                <div class="card-icon">✍️</div>
+                <h3>Redação Paraná</h3>
+                <p>Estudantes do Ensino Fundamental II e Ensino Médio competem produzindo relatos, contos e dissertações na plataforma digital.</p>
+                <span class="card-link">Ver gêneros por ano →</span>
+            </div>
+
+            <div class="card" onclick="exibirDetalhes('robotica')">
+                <div class="card-icon">🤖</div>
+                <h3>Agrorobótica</h3>
+                <p>Equipes unindo tecnologia, automação e programação para resolver gargalos reais da produção agrícola sustentável.</p>
+                <span class="card-link">Ver requisitos →</span>
+            </div>
+
+            <div class="card" onclick="exibirDetalhes('pedagogica')">
+                <div class="card-icon">👩‍🏫</div>
+                <h3>Experiência Pedagógica</h3>
+                <p>Espaço reservado aos professores da rede pública para relatar os projetos inovadores desenvolvidos com as turmas.</p>
+                <span class="card-link">Ver critérios →</span>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="cronograma" class="container">
+        <h2 class="section-title">Cronograma Oficial</h2>
+        <div class="table-container">
+            <table class="schedule-table">
+                <thead>
+                    <tr>
+                        <th>Etapa do Concurso</th>
+                        <th>Período Limite</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Produção de Redações & Projetos Escolares</td>
+                        <td>Até 30 de Junho de 2026</td>
+                        <td><span class="badge status-aberto">Fase Ativa</span></td>
+                    </tr>
+                    <tr>
+                        <td>Avaliação Regional (NRE)</td>
+                        <td>Junho a Julho de 2026</td>
+                        <td><span class="badge status-espera">Aguardando</span></td>
+                    </tr>
+                    <tr>
+                        <td>Banca de Avaliação Estadual (SENAR)</td>
+                        <td>Agosto de 2026</td>
+                        <td><span class="badge status-espera">Aguardando</span></td>
+                    </tr>
+                    <tr>
+                        <td>Grande Evento de Premiação (Curitiba)</td>
+                        <td>Novembro de 2026</td>
+                        <td><span class="badge status-espera">Final do Ano</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
     <footer id="contato">
-        <p>&copy; 2026 Concurso Agrinho. Desenvolvido para fins educativos e de engajamento escolar.</p>
-        <p style="margin-top: 5px; font-size: 0.8rem; opacity: 0.8;">Unindo Campo e Cidade através da Educação.</p>
+        <p>&copy; 2026 Concurso Agrinho - Portal de Acompanhamento Escolar.</p>
+        <p>Iniciativa em conformidade com as diretrizes do Sistema FAEP e SEED-PR.</p>
     </footer>
 
+    <script src="script.js"></script>
 </body>
 </html>
