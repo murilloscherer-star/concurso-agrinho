@@ -1,83 +1,61 @@
 // ==========================================
+// CONFIGURAÇÕES GERAIS / CONSTANTES
+// ==========================================
+const CONFIG_AGRINHO = {
+    DATA_LIMITE: new Date("August 31, 2026 23:59:59").getTime(),
+    MENSAGENS_CATEGORIAS: {
+        desenho: "🎨 Categoria Desenho: Destinado a Alunos da Educação Infantil e 1º ano. O tema deve focar em sustentabilidade.",
+        redacao: "✍️ Categoria Redação: Do 2º ao 9º ano e Ensino Médio. Gêneros textuais variam de acordo com o ano escolar.",
+        professor: "👩‍🏫 Experiência Pedagógica: Relatos de projetos práticos aplicados em sala de aula com a comunidade.",
+        padrao: "🌱 Participe do Agrinho 2026 e mude a realidade da sua comunidade!"
+    }
+};
+
+// ==========================================
 // 1. CONTAGEM REGRESSIVA PARA AS INSCRIÇÕES
 // ==========================================
-function iniciarContagemRegressiva() {
-    // Define a data limite: 31 de Agosto de 2026 às 23:59:59
-    const dataLimite = new Date("August 31, 2026 23:59:59").getTime();
+/**
+ * Inicia e gerencia o cronômetro da data limite.
+ * Otimização: Uso de seletores opcionais para atualizar elementos HTML caso existam.
+ * @param {string} [idDisplay] - ID do elemento HTML para renderizar o texto.
+ */
+function iniciarContagemRegressiva(idDisplay = null) {
+    const elementoHtml = idDisplay ? document.getElementById(idDisplay) : null;
 
-    // Atualiza o contador a cada 1 segundo
-    const intervalo = setInterval(function() {
-        const agora = new Date().getTime();
-        const distancia = dataLimite - agora;
+    const intervalo = setInterval(() => {
+        const agora = Date.now(); // Mais performático que new Date().getTime()
+        const distancia = CONFIG_AGRINHO.DATA_LIMITE - agora;
 
-        // Cálculos de tempo para dias, horas, minutos e segundos
-        const dias = Math.floor(distancia / (1000 * 60 * 60 * 24));
-        const horas = Math.floor((distancia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutos = Math.floor((distancia % (1000 * 60 * 60)) / (1000 * 60));
-        const segundos = Math.floor((distancia % (1000 * 60)) / 1000);
-
-        // Exibe o resultado no console (ou você pode injetar no HTML)
-        console.log(`Inscrições Agrinho 2026 fecham em: ${dias}d ${horas}h ${minutos}m ${segundos}s`);
-
-        // Se a contagem regressiva terminar
         if (distancia < 0) {
             clearInterval(intervalo);
-            console.log("Inscrições Encerradas!");
+            const mensagemEncerrado = "Inscrições Encerradas!";
+            
+            if (elementoHtml) elementoHtml.textContent = mensagemEncerrado;
+            console.log(mensagemEncerrado);
+            return;
+        }
+
+        // Cálculos de tempo otimizados com atribuição via desestruturação
+        const dias = Math.floor(distancia / 86400000);
+        const horas = Math.floor((distancia % 86400000) / 3600000);
+        const minutos = Math.floor((distancia % 3600000) / 60000);
+        const segundos = Math.floor((distancia % 60000) / 1000);
+
+        const textoContador = `Inscrições Agrinho 2026 fecham em: ${dias}d ${horas}h ${minutos}m ${segundos}s`;
+
+        // Se houver um elemento na tela, atualiza a interface, senão mantém no console
+        if (elementoHtml) {
+            elementoHtml.textContent = textoContador;
+        } else {
+            console.log(textoContador);
         }
     }, 1000);
 }
 
-
 // ==========================================
 // 2. INTERATIVIDADE NAS CATEGORIAS (ALERT)
 // ==========================================
-// Função para mostrar detalhes extras quando o usuário clica em uma categoria
-function detalharCategoria(nomeCategoria) {
-    let mensagem = "";
-
-    switch (nomeCategoria.toLowerCase()) {
-        case 'desenho':
-            mensagem = "🎨 Categoria Desenho: Destinado a Alunos da Educação Infantil e 1º ano. O tema deve focar em sustentabilidade.";
-            break;
-        case 'redacao':
-            mensagem = "✍️ Categoria Redação: Do 2º ao 9º ano e Ensino Médio. Gêneros textuais variam de acordo com o ano escolar.";
-            break;
-        case 'professor':
-            mensagem = "👩‍🏫 Experiência Pedagógica: Relatos de projetos práticos aplicados em sala de aula com a comunidade.";
-            break;
-        default:
-            mensagem = "🌱 Participe do Agrinho 2026 e mude a realidade da sua comunidade!";
-    }
-
-    alert(mensagem);
-}
-
-
-// ==========================================
-// 3. VALIDAÇÃO SIMPLES DE FORMULÁRIO
-// ==========================================
-function validarInscricao(nomeCompleto, email, categoriaSelecionada) {
-    // Remove espaços em branco nas pontas
-    if (nomeCompleto.trim() === "" || email.trim() === "") {
-        console.error("Erro: Todos os campos são obrigatórios.");
-        return false;
-    }
-
-    // Validação básica de formato de e-mail
-    if (!email.includes("@") || !email.includes(".")) {
-        console.error("Erro: Por favor, insira um e-mail válido.");
-        return false;
-    }
-
-    console.log(`✅ Sucesso! Pré-inscrição realizada para ${nomeCompleto} na categoria ${categoriaSelecionada}.`);
-    return true;
-}
-
-// ==========================================
-// EXECUÇÃO INICIAL (TESTES)
-// ==========================================
-// Inicia o relógio regressivo automaticamente ao carregar o script
-iniciarContagemRegressiva();
-
-// Exemplo de teste da validação no console do navegador
-validarInscricao("Maria Silva", "maria.prof@escola.com", "Experiência Pedagógica");
+/**
+ * Exibe detalhes da categoria selecionada.
+ * Otimização: Substituição do Switch/Case por um Objeto Literal (Dicionário), que é mais limpo e rápido.
+ * @param {string} nome
